@@ -1,3 +1,7 @@
+DOCKER=docker
+RUN_CMD=run --rm -p 4000:4000 -v "/src:/src"
+IMAGE=grahamc/jekyll
+
 up:
 	vagrant plugin install vagrant-parallels
 	vagrant init parallels/boot2docker
@@ -7,11 +11,15 @@ up:
 	echo 'export DOCKER_HOST="tcp://${DOCKER_HOST_IP}:2375"'
 
 build:
-	docker run --rm -p 4000:4000 -v "/src:/src" grahamc/jekyll build
+	${DOCKER} ${RUN_CMD} ${IMAGE} build
 
 serve:
-	docker run --rm -p 4000:4000 -v "/src:/src" grahamc/jekyll serve
+	${DOCKER} ${RUN_CMD} ${IMAGE} serve
 
-inspect:
-	docker run --rm -p 4000:4000 -it -v "/src:/src" --entrypoint /bin/bash grahamc/jekyll
+debug:
+	${DOCKER} ${RUN_CMD} ${IMAGE} serve --watch
+
+# run bash in the container to inspect everything
+bash:
+	${DOCKER} ${RUN_CMD} -it --entrypoint /bin/bash ${IMAGE}
 
