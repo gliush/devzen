@@ -5,6 +5,22 @@
     color: #777777;
 }
 
+#site-generator{
+    float:right;
+    font-family:Georgia,"Bitstream Charter",serif;
+    font-style:italic;
+}
+#site-generator a{
+    /* background:url("img/wordpress.png") no-repeat scroll left center transparent;*/ 
+    color:#787878;
+    display:inline-block;
+    line-height:16px;
+    padding-left:20px;
+    text-decoration:none;
+}
+
+.alignleft{float:left;margin:0 20px 20px 0;}
+
 .navbar-form {margin-top: 3px; margin-bottom: 3px;}
 .navbar-brand {font-size:14px; min-height:42px !important; height: 42 !important;}
 .navbar .navbar-header > .a {font: 14px, "Helvetica Neue", Helvetica, Arial, sans-serif;}
