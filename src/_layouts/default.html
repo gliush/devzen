@@ -7,7 +7,7 @@
 
     <!--<link href="http://yastatic.net/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">-->
     <link href="http://yastatic.net/bootstrap/3.1.1/css/bootstrap.css" rel="stylesheet">
-	<link href="stylesheets/styles.css" rel="stylesheet">
+	<link href="/stylesheets/styles.css" rel="stylesheet">
 
 
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
@@ -19,15 +19,15 @@
     <meta property="og:description" content="Подкаст о программировании, IT и смежных темах" />
 
     <!-- Fav and touch icons -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="img/apple-touch-icon-57-precomposed.png">
-    <link rel="shortcut icon" href="img/favicon.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/img/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/img/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/img/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="/img/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="/img/favicon.png">
 
 	<script type="text/javascript" src="http://yastatic.net/jquery/2.1.1/jquery.min.js"></script>
 	<script type="text/javascript" src="http://yastatic.net/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="javascripts/scripts.js"></script>
+	<script type="text/javascript" src="/javascripts/scripts.js"></script>
   </head>
   <body>
     <div class="container">
@@ -49,25 +49,15 @@
                          	<span class="icon-bar"></span>
                          	<span class="icon-bar"></span>
                      	</button> 
-                        <ul class="nav navbar-nav">
-                            <li class="active">
-                            	<a href="#">Главная</a>
-                            </li>
-                        </ul>
+                        <ul class="nav navbar-nav"> <li class="active"> <a href="#">Главная</a> </li> </ul>
                         <!--<a class="navbar-nav navbar-brand" href="#">Главная</a>-->
                     </div>
                     
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav">
-                            <li>
-                            	<a href="http://devzen.ru/donate/">Поддержать</a>
-                            </li>
-                            <li>
-                                <a href="http://devzen.ru/itunes/">iTunes</a>
-                            </li>
-                            <li>
-                                <a href="http://devzen.ru/feed/">RSS</a>
-                            </li>
+                            <li> <a href="http://devzen.ru/donate/">Поддержать</a> </li>
+                            <li> <a href="http://devzen.ru/itunes/">iTunes</a> </li>
+                            <li> <a href="http://devzen.ru/feed/">RSS</a> </li>
                         </ul>
                         <form class="navbar-form navbar-right" role="search" id="searchform" method="get" action="https://encrypted.google.com/search" >
                             <div class="form-group">
@@ -82,15 +72,9 @@
         </div>
         <div class="row clearfix">
             <div class="col-md-8 column">
-                <h2>
-                    Heading
-                </h2>
-                <p>
-                    Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-                </p>
-                <p>
-                    <a class="btn" href="#">View details »</a>
-                </p>
+              <section>
+                {{ content }}
+              </section>
             </div>
             <div class="col-md-4 column">
                 <div class="well">
@@ -107,25 +91,35 @@
             </div>
         </div>
     </div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'devzen'; // required: replace example with your forum shortname
+        var disqus_url = 'http://devzen.ru{{ page.permalink }}';
+        var disqus_identifier = 'http://devzen.ru{{ page.permalink }}';
+
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'devzen'; // required: replace example with your forum shortname
+        var disqus_url = 'http://devzen.ru{{ page.permalink }}';
+        var disqus_identifier = 'http://devzen.ru{{ page.permalink }}';
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function () {
+            var s = document.createElement('script'); s.async = true;
+            s.type = 'text/javascript';
+            s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+      }());
+    </script>
       <!--
-    <div class="wrapper">
-      <header>
-        <a href="/"><h1>DevZen Podcast</h1></a>
-        <p><small>Подкаст о JavaScript'e, фронтенде и сопутствующих технологиях</small></p>
-        <img src="/images/logo.jpg" alt="Frontflip podcast">
-        <p><a href="/podcast.xml">RSS</a></p>
-        <p><a href="https://twitter.com/frontflip_js">Twitter</a>
-        <p><a href="https://itunes.apple.com/ru/podcast/frontflip/id884716456">iTunes</a>
-        <p><a href="mailto:frontflip-podcast@googlegroups.com?subject=[Гость]&body=Привет! Буду рад записать подкаст с вами на тему ">Стать гостем</a></p>
-      </header>
-      <section>
-        {{ content }}
-      </section>
-      <footer>
-        <p><small>Авторы: <a href="https://twitter.com/23ydobemos">Илья Заяц</a> &amp; <a href="https://twitter.com/asuschev">Артем Сущев</a></small></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
-      </footer>
-    </div>
     <script src="javascripts/scale.fix.js"></script>
       <script type="text/javascript">
         var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
@@ -136,29 +130,6 @@
           var pageTracker = _gat._getTracker("UA-51355255-1");
         pageTracker._trackPageview();
         } catch(err) {}
-      </script>
-      <script type="text/javascript">
-          /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-          var disqus_shortname = 'frontflip'; // required: replace example with your forum shortname
-
-          /* * * DON'T EDIT BELOW THIS LINE * * */
-          (function() {
-              var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-              dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-              (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-          })();
-      </script>
-      <script type="text/javascript">
-        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-        var disqus_shortname = 'frontflip'; // required: replace example with your forum shortname
-
-        /* * * DON'T EDIT BELOW THIS LINE * * */
-        (function () {
-            var s = document.createElement('script'); s.async = true;
-            s.type = 'text/javascript';
-            s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-        }());
       </script>
       <a href="https://plus.google.com/102969747807694079652" rel="publisher" style="display:none">Google+</a>
       -->

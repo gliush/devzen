@@ -1,0 +1,47 @@
+.dates div {
+    margin-bottom: 20px;
+    font-size: smaller;
+    margin-left: 20px;
+    color: #777777;
+}
+
+.navbar-form {margin-top: 3px; margin-bottom: 3px;}
+.navbar-brand {font-size:14px; min-height:42px !important; height: 42 !important;}
+.navbar .navbar-header > .a {font: 14px, "Helvetica Neue", Helvetica, Arial, sans-serif;}
+.navbar-default a {padding-top:10px !important; padding-bottom:10px !important;}
+.navbar {min-height:42px !important; height:42px !important;}
+
+.navbar-default { background-color: #1a1a1a; border-color: #535353;}
+.navbar-default .navbar-brand { color: #999999; }
+.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus { color: #ecf0f1; }
+.navbar-default .navbar-text { color: #999999; }
+.navbar-default .navbar-nav > li > a { color: #999999; }
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus { color: #ecf0f1; }
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+    color: #ecf0f1;
+    background-color: #1a1a1a;
+}
+.navbar-default .navbar-toggle { border-color: #535353; }
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus { background-color: #535353; }
+.navbar-default .navbar-toggle .icon-bar { background-color: #999999; }
+.navbar-default .navbar-collapse, .navbar-default .navbar-form { border-color: #999999; }
+.navbar-default .navbar-link { color: #999999; }
+.navbar-default .navbar-link:hover { color: #ecf0f1; }
+
+@media (max-width: 767px) {
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+        color: #999999;
+    }
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+        color: #ecf0f1;
+    }
+    .navbar-default .navbar-nav .open .dropdown-menu > .active > a, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
+        color: #ecf0f1;
+        background-color: #535353;
+    }
+}
+
+body {
+  font: 14px, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}

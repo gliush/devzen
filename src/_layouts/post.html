@@ -1,0 +1,24 @@
+---
+layout: default
+---
+<h2> <p>{{page.title}}</p> </h2>
+<div class="dates">
+    <div>{{page.record_date | date: '%a, %d %b %Y'}}</div>
+    <!--<div>Опубликовано: {{page.public_date}}</div>-->
+</div>
+<p>{{page.summary}}</p>
+
+<section>
+  {{ content }}
+  <p>&nbsp;</p>
+  <audio controls>
+    <source src="{{page.episode_url}}" type="audio/mpeg">
+  </audio>
+  <p> Скачать <a href="{{ page.episode_url }}">mp3</a> </p>
+  <p> Голоса выпуска: {% for author_h in page.authors %}{% for author in author_h %}<a href="{{ author[1] }}">{{ author[0] }}</a>{% endfor %}{% if forloop.last == false %}, {% endif %}{% endfor %} </p>
+  <p> Фоновая музыка: {% for music_h in page.background_music %} {% for music in music_h %} <a href="{{ music[1] }}">{{ music[0] }}</a> {% endfor %} {% endfor %} </p>
+
+</section>
+
+<div id="disqus_thread"></div>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
