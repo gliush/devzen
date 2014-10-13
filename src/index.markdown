@@ -7,6 +7,9 @@ title: DevZen Podcast. Подкаст о программировании, IT и
 
 <ul class="posts">
   {% for post in site.posts %}
-    <li><span>{{ post.date | date: "%d/%m/%Y" }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a> <a href="{{ post.url }}#disqus_thread"></a></a></li>
+    <li><span>{{ post.date | date: "%d/%m/%Y" }}</span> &raquo; 
+        <a href="{{ post.url }}">{{ post.title }}</a> 
+        (<a data-disqus-identifier="http://devzen.ru{{ post.permalink }}" href="{{ post.url }}#disqus_thread">Комментарии</a>)
+    </li>
   {% endfor %}
 </ul>
