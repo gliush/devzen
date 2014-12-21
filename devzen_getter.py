@@ -8,6 +8,7 @@ import os
 import re
 from collections import defaultdict
 from urllib2 import urlopen
+from htmlentitydefs import name2codepoint
 import urllib
 
 from HTMLParser import HTMLParser
@@ -25,6 +26,7 @@ class DevzenParser(HTMLParser):
         self.tags = []
         self.attrs = None
         self.section = None
+        self.chars = u''
         self.podcast = defaultdict(str)
         HTMLParser.__init__(self)
 
@@ -34,14 +36,25 @@ class DevzenParser(HTMLParser):
     def handle_endtag(self, tag):
         self.tags.pop()
         self.attrs = None
+    def handle_entityref(self, name):
+        c = unichr(name2codepoint[name])
+        self.chars += c
+        print "Named ent:", c
+    def handle_charref(self, name):
+        if name.startswith('x'):
+            c = unichr(int(name[1:], 16))
+        else:
+            c = unichr(int(name))
+        self.chars += c
+        print "Num ent  :", c
     def handle_data(self, data):
         tags = "/".join(self.tags)
         #print tags,": ", data
+        data = self.chars + data
+        self.chars = u''
         if tags == "html/head/title":
-            if not "title" in self.podcast:
-                self.podcast["title"] = data
-            elif not 'DevZen Podcast' in data: # убираем лишний везде "DevZen Podcast"
-                self.podcast["title"] += u' - ' + data
+            if not 'DevZen Podcast' in data: # убираем лишний везде "DevZen Podcast"
+                self.podcast["title"] += data
         elif tags == "html/body/div/div/header/section/div/article/header/div/time":
             self.podcast["publish_date"] = datetime.datetime.strptime(data, "%d.%m.%Y")
             self.podcast["record_date"] = datetime.datetime.strptime(data, "%d.%m.%Y")
@@ -62,18 +75,20 @@ class DevzenParser(HTMLParser):
                     self.section = None
 
         elif tags == "html/body/div/div/header/section/div/article/div/ul/li/a":
-            link = dict(self.attrs)
-            if not "shownotes" in self.podcast:
-                link["text"] = data
-                self.podcast["shownotes"] = []
-            elif self.podcast["shownotes"][-1]["href"] == link["href"]:
-                # more text to the previous link
-                link = self.podcast["shownotes"].pop()
-                link["text"] += u" - " + data
-            else:
-                # new link
-                link["text"] = data
-            self.podcast["shownotes"].append(link)
+            if self.attrs:
+                print "AA%sAA" % data
+                link = dict(self.attrs)
+                if not "shownotes" in self.podcast:
+                    link["text"] = data
+                    self.podcast["shownotes"] = []
+                elif self.podcast["shownotes"][-1]["href"] == link["href"]:
+                    # more text to the previous link
+                    link = self.podcast["shownotes"].pop()
+                    link["text"] += " " + data
+                else:
+                    # new link
+                    link["text"] = data
+                self.podcast["shownotes"].append(link)
         elif tags == "html/body/div/div/header/section/div/article/div/p/a":
             if self.section == "hosts":
                 if not "hosts" in self.podcast:
