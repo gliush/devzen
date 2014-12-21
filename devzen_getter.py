@@ -39,14 +39,14 @@ class DevzenParser(HTMLParser):
     def handle_entityref(self, name):
         c = unichr(name2codepoint[name])
         self.chars += c
-        print "Named ent:", c
+        #print "Named ent:", c
     def handle_charref(self, name):
         if name.startswith('x'):
             c = unichr(int(name[1:], 16))
         else:
             c = unichr(int(name))
         self.chars += c
-        print "Num ent  :", c
+        #print "Num ent  :", c
     def handle_data(self, data):
         tags = "/".join(self.tags)
         #print tags,": ", data
@@ -76,7 +76,7 @@ class DevzenParser(HTMLParser):
 
         elif tags == "html/body/div/div/header/section/div/article/div/ul/li/a":
             if self.attrs:
-                print "AA%sAA" % data
+                #print "AA%sAA" % data
                 link = dict(self.attrs)
                 if not "shownotes" in self.podcast:
                     link["text"] = data
