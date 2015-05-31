@@ -1,0 +1,137 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>DevZen Podcast</title>
+
+    <!--<link href="http://yastatic.net/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">-->
+    <link href="http://yastatic.net/bootstrap/3.1.1/css/bootstrap.css" rel="stylesheet">
+	<link href="/stylesheets/styles.css" rel="stylesheet">
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <meta property="og:locale" content="ru_RU" />
+    <meta property="og:site_name" content="DevZen podcast" />
+    <meta property="og:title" content="{{page.title}}" />
+    <meta property="og:image" content="images/logo.jpg" />
+    <meta property="og:description" content="Подкаст о программировании, IT и смежных темах" />
+
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/img/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/img/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/img/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="/img/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="/img/favicon.png">
+
+	<script type="text/javascript" src="http://yastatic.net/jquery/2.1.1/jquery.min.js"></script>
+	<script type="text/javascript" src="http://yastatic.net/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/javascripts/scripts.js"></script>
+  </head>
+  <body>
+    <div class="container">
+        <div class="row clearfix">
+            <div class="col-md-12 column">
+                <h1>
+                    <a href="/" title="DevZen Podcast" rel="home">
+                        <span>DevZen Podcast</span>
+                    </a>
+                </h1>
+                <h2>
+                    Подкаст о программировании, IT и смежных темах
+                </h2>
+                <nav class="navbar navbar-default" role="navigation">
+                    <div class="active navbar-header">
+	                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> 
+                         	<span class="sr-only">Toggle navigation</span>
+                         	<span class="icon-bar"></span>
+                         	<span class="icon-bar"></span>
+                         	<span class="icon-bar"></span>
+                     	</button> 
+                        <ul class="nav navbar-nav"> <li class="active"> <a href="/">Главная</a> </li> </ul>
+                        <!--<a class="navbar-nav navbar-brand" href="#">Главная</a>-->
+                    </div>
+                    
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            <li> <a href="http://devzen.ru/donate/">Поддержать</a> </li>
+                            <li> <a href="http://devzen.ru/itunes/">iTunes</a> </li>
+                            <li> <a href="/feed/">RSS</a> </li>
+                        </ul>
+                        <form class="navbar-form navbar-right" role="search" id="searchform" method="get" action="https://encrypted.google.com/search" >
+                            <div class="form-group">
+                            	<input type="hidden" name="as_sitesearch" value="devzen.ru" />
+                            	<input type="text" id="s" name="as_q" placeholder="Поиск по сайту" class="form-control">
+                            </div>
+                        </form>
+                    </div>
+                    
+                </nav>
+            </div>
+        </div>
+        <div class="row clearfix">
+            <div class="col-md-8 column">
+              <section>
+                {{ content }}
+              </section>
+            </div>
+            <div class="col-md-4 column">
+                <div class="well">
+                    <h2> Комменты </h2>
+                    <div class="textwidget">
+                        <script type="text/javascript" src="http://devzen.disqus.com/recent_comments_widget.js?num_items=15&hide_avatars=0&avatar_size=16&excerpt_length=140"></script>
+                        <noscript>Для отображения виджета необходимо включить JavaScript.</noscript>
+                    </div>
+                </div>
+                <div class="well">
+                    <h2 class="widget-title">Дискламер</h2>
+                    <div class="textwidget">
+                        Представленные материалы являются личным мнением людей, работающих над сайтом. 
+                        Это мнение не является достоверным, ровно как и постоянным. 
+                        Оно не отражает официальную позицию каких-либо компаний 
+                        и не является призывом к каким бы то ни было действиям. 
+                        Мы сожалеем, если наше мнение ранит ваши чувства. 
+                        Это не было нашей целью и вышло случайно.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer id="colophon" role="contentinfo" class="span12">
+            <div id="page-footer" class="well clearfix">
+                <span class="credits alignleft">
+                    &copy; 2014 <a href="http://devzen.ru">DevZen Podcast &laquo; Подкаст о программировании, IT и смежных темах</a>
+                </span>
+                <div id="site-generator">
+                    <!--LiveInternet counter-->
+                    <script type="text/javascript"><!--
+    document.write("<a href='http://www.liveinternet.ru/stat/devzen.ru/' "+
+    "target=_blank><img src='http://counter.yadro.ru/hit?t14.1;r"+
+    escape(document.referrer)+((typeof(screen)=="undefined")?"":
+    ";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?
+    screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
+    ";h"+escape(document.title.substring(0,80))+";"+Math.random()+
+    "' alt='' title='LiveInternet: number of pageviews for 24 hours,"+
+    " of visitors for 24 hours and for today is shown' "+
+    "border='0' width='88' height='31'><\/a>")
+    //--></script><!--/LiveInternet-->
+                </div>
+            </div>
+        </footer>
+    </div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'devzen'; // required: replace example with your forum shortname
+    var disqus_url = 'http://devzen.ru{{ page.permalink }}';
+    var disqus_identifier = 'http://devzen.ru{{ page.permalink }}';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+  }());
+</script>
+  </body>
+</html>
