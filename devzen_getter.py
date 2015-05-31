@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import pprint
+import string
 import sys
 import datetime
 import os
@@ -31,9 +32,11 @@ class DevzenParser(HTMLParser):
         HTMLParser.__init__(self)
 
     def handle_starttag(self, tag, attrs):
+        #print "enter %s" % tag
         self.tags.append(tag)
         self.attrs = attrs
     def handle_endtag(self, tag):
+        #print "exit %s" % tag
         self.tags.pop()
         self.attrs = None
     def handle_entityref(self, name):
@@ -60,22 +63,33 @@ class DevzenParser(HTMLParser):
             self.podcast["record_date"] = datetime.datetime.strptime(data, "%d.%m.%Y")
             self.podcast["publish_date_str"] = datetime.datetime.strptime(data, "%d.%m.%Y").isoformat()
             self.podcast["record_date_str"] = datetime.datetime.strptime(data, "%d.%m.%Y").isoformat()
-        elif tags == "html/body/div/div/header/section/div/article/div/p":
+        elif tags.startswith("html/body/div/div/header/section/div/article/div/p"):
             if u'Голоса выпуска' in data:
                 self.section = "hosts"
             elif u'Подкаст' in data:
                 self.section = "episode_url"
             elif u'Темы выпуска' in data:
                 self.podcast["summary"] = re.sub(u"Темы выпуска: ", u"", data)
-            else:
-                # хитрый хак, не знаю, как иначе обойти: запятая между ведущими - отдельный p
-                if self.section == "hosts" and data == ", ":
-                    pass
-                else:
-                    self.section = None
+                self.section = None
+
+            if tags == "html/body/div/div/header/section/div/article/div/p/a":
+                if self.section == "hosts":
+                    if not "hosts" in self.podcast:
+                        self.podcast["hosts"] = []
+                    link = dict(self.attrs)
+                    link["text"] = data
+                    self.podcast["hosts"].append(link)
+                elif self.section == "episode_url":
+                    link = dict(self.attrs)
+                    self.podcast["episode_url"] = link["href"]
+                    self.podcast["episode_file"] = link["download"]
+                    site = urllib.urlopen(link["href"])
+                    meta = site.info()
+                    self.podcast["length"] = meta.getheaders("Content-Length")[0]
 
         elif tags == "html/body/div/div/header/section/div/article/div/ul/li/a":
             if self.attrs:
+                data = string.replace(data, "|", "\|")
                 #print "AA%sAA" % data
                 link = dict(self.attrs)
                 if not "shownotes" in self.podcast:
@@ -89,20 +103,8 @@ class DevzenParser(HTMLParser):
                     # new link
                     link["text"] = data
                 self.podcast["shownotes"].append(link)
-        elif tags == "html/body/div/div/header/section/div/article/div/p/a":
-            if self.section == "hosts":
-                if not "hosts" in self.podcast:
-                    self.podcast["hosts"] = []
-                link = dict(self.attrs)
-                link["text"] = data
-                self.podcast["hosts"].append(link)
-            elif self.section == "episode_url":
-                link = dict(self.attrs)
-                self.podcast["episode_url"] = link["href"]
-                self.podcast["episode_file"] = link["download"]
-                site = urllib.urlopen(link["href"])
-                meta = site.info()
-                self.podcast["length"] = meta.getheaders("Content-Length")[0]
+        else:
+            self.section = None
 
 if len(sys.argv) != 2:
     help()
@@ -144,7 +146,7 @@ publish_date: %(publish_date_str)s
 length: %(length)s
 background_music:
  - Plastic3 - Corporate Rock Motivation Loop 4: http://www.jamendo.com/en/track/1109994/corporate-rock-motivation-loop-4
-summary: %(summary)s
+summary: "%(summary)s"
 authors:
 """ % parser.podcast).encode('utf-8'))
 
