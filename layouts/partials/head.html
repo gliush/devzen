@@ -1,6 +1,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="{{ printf "%scss/main.css" site.BaseURL }}">
 <meta name='yandex-verification' content='627f6edd89bb286d' />
 <meta name="google-site-verification" content="RvL6esivvL2C0-F35ixKDdX7XjWBbx9__77TJluTVlA" />
 <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} « {{ .Site.Title }}{{ end }}</title>
