@@ -1,0 +1,324 @@
+/* =========================================================
+   DevZen Podcast — Hugo theme
+   Matches the visual design of the original WordPress/Bootstrap theme
+   ========================================================= */
+
+/* ----- Reset & base ----- */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #f5f5f5;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+}
+
+a { color: #0088cc; text-decoration: none; }
+a:hover { color: #005580; text-decoration: underline; }
+
+img { max-width: 100%; height: auto; }
+
+h1, h2, h3, h4 { line-height: 1.2; margin: 0 0 12px; }
+
+/* ----- Layout ----- */
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ----- Header / navbar ----- */
+header {
+  background: #222;
+  color: #fff;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+header .container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+header h1 a { color: #fff; }
+header h1 a:hover { color: #ddd; text-decoration: none; }
+
+header p {
+  margin: 0;
+  font-size: 13px;
+  color: #ddd;
+}
+
+header nav {
+  margin-left: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+header nav a {
+  color: #ccc;
+  font-size: 13px;
+  padding: 4px 8px;
+  border-radius: 3px;
+}
+
+header nav a:hover {
+  color: #fff;
+  background: #444;
+  text-decoration: none;
+}
+
+/* ----- Main content ----- */
+main {
+  background: #fff;
+  max-width: 960px;
+  margin: 18px auto;
+  padding: 20px 24px 32px;
+  border-radius: 2px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* ----- Footer ----- */
+footer {
+  text-align: center;
+  color: #999;
+  font-size: 12px;
+  padding: 16px 0 32px;
+}
+
+/* ----- Homepage: episode cards ----- */
+.episode-card {
+  margin-bottom: 40px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid #eee;
+}
+
+.episode-card:last-of-type {
+  border-bottom: none;
+}
+
+.episode-card-img {
+  display: block;
+  width: 100%;
+  max-height: 340px;
+  object-fit: cover;
+  border-radius: 2px;
+  margin-bottom: 14px;
+}
+
+.episode-card-body {}
+
+.episode-card-title {
+  font-size: 22px;
+  margin: 0 0 6px;
+}
+
+.episode-card-title a { color: #222; }
+.episode-card-title a:hover { color: #0088cc; text-decoration: none; }
+
+.episode-card-meta {
+  font-size: 13px;
+  color: #999;
+  margin: 0 0 10px;
+}
+
+.episode-card-summary {
+  font-size: 14px;
+  color: #444;
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* ----- Episode list page ----- */
+.episode-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.episode-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 8px 0;
+  border-bottom: 1px solid #f0f0f0;
+  gap: 12px;
+}
+
+.episode-date {
+  font-size: 12px;
+  color: #999;
+  white-space: nowrap;
+}
+
+/* Pagination */
+.pagination { margin-top: 20px; }
+.pagination a, .pagination span {
+  display: inline-block;
+  padding: 4px 10px;
+  margin: 0 2px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  font-size: 13px;
+}
+.pagination a { color: #0088cc; }
+.pagination a:hover { background: #f5f5f5; text-decoration: none; }
+.pagination span { color: #999; background: #f5f5f5; }
+.pagination span.current { color: #333; background: #e8e8e8; border-color: #ccc; font-weight: bold; }
+.pagination span.ellipsis { border: none; background: none; color: #999; padding: 4px 2px; }
+
+/* ----- Episode single ----- */
+article.episode h1 {
+  font-size: 26px;
+  margin-bottom: 6px;
+}
+
+.episode-meta {
+  color: #888;
+  font-size: 13px;
+  margin: 0 0 16px;
+}
+
+article.episode img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 0 16px;
+  border-radius: 2px;
+}
+
+.audio-meta {
+  font-size: 13px;
+  color: #888;
+  margin: 6px 0 0;
+}
+
+.chat-links {
+  margin: 12px 0;
+  font-size: 13px;
+}
+
+/* ----- Audio player ----- */
+.audio-player {
+  margin: 16px 0 8px;
+}
+
+.audio-player audio {
+  width: 100%;
+  display: block;
+}
+
+/* ----- Show notes ----- */
+.show-notes {
+  margin-top: 20px;
+  border-top: 1px solid #eee;
+  padding-top: 16px;
+}
+
+.show-notes ul, .show-notes ol {
+  padding-left: 24px;
+  margin: 0 0 12px;
+}
+
+.show-notes li { margin-bottom: 4px; }
+
+.show-notes p { margin: 0 0 12px; }
+
+.show-notes h2, .show-notes h3 {
+  font-size: 16px;
+  margin: 16px 0 8px;
+  color: #444;
+}
+
+.show-notes img {
+  max-width: 100%;
+  margin: 8px 0;
+}
+
+/* Timestamps — bold, clickable cursor */
+span.ts {
+  font-weight: bold;
+  cursor: pointer;
+  color: #0088cc;
+}
+
+span.ts:hover { text-decoration: underline; }
+
+/* ----- Episode page: 2-column layout ----- */
+.episode-layout {
+  display: flex;
+  gap: 28px;
+  align-items: flex-start;
+}
+
+.episode-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.episode-sidebar {
+  width: 240px;
+  flex-shrink: 0;
+}
+
+.sidebar-widget {
+  background: #f9f9f9;
+  border: 1px solid #e5e5e5;
+  border-radius: 3px;
+  padding: 14px 16px;
+  margin-bottom: 20px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.sidebar-widget h3 {
+  font-size: 14px;
+  font-weight: bold;
+  margin: 0 0 10px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #e0e0e0;
+  color: #333;
+}
+
+.sidebar-widget p { margin: 0 0 8px; }
+.sidebar-widget p:last-child { margin: 0; }
+
+/* ----- Static pages ----- */
+.page-content p { margin: 0 0 12px; }
+.page-content ol, .page-content ul { padding-left: 24px; margin-bottom: 12px; }
+.page-content li { margin-bottom: 4px; }
+
+/* ----- Responsive ----- */
+@media (max-width: 640px) {
+  main { margin: 8px; padding: 14px 14px 24px; }
+
+  header .container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  header nav { margin-left: 0; }
+
+  article.episode h1 { font-size: 20px; }
+
+  .episode-layout { flex-direction: column; }
+  .episode-sidebar { width: 100%; }
+
+  .latest-episodes li,
+  .episode-list li { flex-direction: column; gap: 2px; }
+}

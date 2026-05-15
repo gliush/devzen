@@ -1,0 +1,35 @@
+{{ $p := . }}
+{{ if gt $p.TotalPages 1 }}
+{{ $total := $p.TotalPages }}
+{{ $cur   := $p.PageNumber }}
+<nav class="pagination">
+  {{ if $p.HasPrev }}
+    <a href="{{ $p.Prev.URL }}">&laquo;</a>
+  {{ else }}
+    <span>&laquo;</span>
+  {{ end }}
+
+  {{ $prev := 0 }}
+  {{ range $p.Pagers }}
+    {{ $num := .PageNumber }}
+    {{ $show := or (le $num 2) (ge $num (sub $total 1)) (and (ge $num (sub $cur 1)) (le $num (add $cur 1))) }}
+    {{ if $show }}
+      {{ if gt (sub $num $prev) 1 }}
+        <span class="ellipsis">&hellip;</span>
+      {{ end }}
+      {{ if eq $num $cur }}
+        <span class="current">{{ $num }}</span>
+      {{ else }}
+        <a href="{{ .URL }}">{{ $num }}</a>
+      {{ end }}
+      {{ $prev = $num }}
+    {{ end }}
+  {{ end }}
+
+  {{ if $p.HasNext }}
+    <a href="{{ $p.Next.URL }}">&raquo;</a>
+  {{ else }}
+    <span>&raquo;</span>
+  {{ end }}
+</nav>
+{{ end }}

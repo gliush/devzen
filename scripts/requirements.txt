@@ -1,0 +1,8 @@
+beautifulsoup4
+lxml
+python-frontmatter
+anthropic
+playwright
+Pillow
+python-dateutil
+tqdm

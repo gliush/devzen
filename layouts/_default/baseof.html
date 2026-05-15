@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language.Locale }}">
+<head>
+{{ partial "head.html" . }}
+</head>
+<body>
+<header>
+  <div class="container">
+    <div>
+      <h1><a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a></h1>
+      <p>Подкаст о программировании, IT и смежных темах (16+)</p>
+    </div>
+    <nav>
+      <a href="/">Главная</a>
+      <a href="/episodes/">Выпуски</a>
+      <a href="/live/">Вещание</a>
+      <a href="/guests/">Стать гостем</a>
+      <a href="/contact/">Связаться</a>
+      <a href="/feed/index.xml">RSS</a>
+    </nav>
+  </div>
+</header>
+<main class="container">
+{{ block "main" . }}{{ end }}
+</main>
+<footer>
+  <p>© 2014–{{ now.Year }} DevZen Podcast · <a href="/feed/index.xml">RSS</a></p>
+</footer>
+{{ partial "timestamps.html" . }}
+</body>
+</html>

@@ -1,0 +1,17 @@
+<script>
+document.addEventListener('click', function(e) {
+  var ts = e.target.closest('.ts[data-t]');
+  if (!ts) return;
+  var audio = document.querySelector('audio');
+  if (!audio) return;
+  var parts = ts.dataset.t.split(':').map(Number);
+  var secs = parts.length === 3 ? parts[0]*3600 + parts[1]*60 + parts[2]
+                                 : parts[0]*60 + parts[1];
+  audio.currentTime = secs;
+  audio.play();
+});
+</script>
+<style>
+.ts { cursor: pointer; color: #0066cc; }
+.ts:hover { text-decoration: underline; }
+</style>

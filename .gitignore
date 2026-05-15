@@ -1,0 +1,6 @@
+public/
+resources/
+scripts/migration_log/
+.venv/
+__pycache__/
+*.pyc

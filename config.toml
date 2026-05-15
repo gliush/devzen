@@ -1,0 +1,27 @@
+baseURL = "https://devzen.ru/"
+locale = "ru"
+defaultContentLanguage = "ru"
+title = "DevZen Podcast"
+paginate = 10
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+[permalinks]
+  episodes = "/:slug/"
+
+[outputs]
+  home = ["HTML", "RSS"]
+  section = ["HTML", "RSS"]
+
+[outputFormats.RSS]
+  mediatype = "application/rss+xml"
+  baseName = "feed"
+
+[params.podcast]
+  itunesAuthor     = "DevZen Podcast"
+  itunesOwnerName  = "DevZen Podcast"
+  itunesOwnerEmail = "devzen.podcast@gmail.com"
+  itunesCategory   = "Technology"
+  itunesImage      = "https://devzen.ru/files/devzen.jpg"
+  itunesSummary    = "Подкаст о программировании, IT и смежных темах (16+)"

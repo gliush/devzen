@@ -1,0 +1,15 @@
+User-agent: *
+Disallow: /itunes/
+Disallow: /donate/
+Disallow: /spotify/
+Disallow: /wp-admin/
+Disallow: /category/
+Disallow: /author/
+Disallow: /download/
+Disallow: */feed
+Disallow: */trackback
+Disallow: */comment
+Disallow: /?p=
+Crawl-delay: 10
+Host: devzen.ru
+Sitemap: http://devzen.ru/sitemap.xml

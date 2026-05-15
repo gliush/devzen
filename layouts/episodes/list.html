@@ -1,0 +1,17 @@
+{{ define "main" }}
+<div class="episode-layout">
+  <div class="episode-body">
+    <h1>Выпуски</h1>
+    <ul class="episode-list">
+    {{ range .Paginator.Pages }}
+      <li>
+        <a href="{{ .Permalink }}">{{ .Title }} — Episode {{ .Params.number }}</a>
+        <span class="episode-date">{{ .Date.Format "02.01.2006" }}</span>
+      </li>
+    {{ end }}
+    </ul>
+    {{ partial "pagination.html" .Paginator }}
+  </div>
+  {{ partial "sidebar.html" . }}
+</div>
+{{ end }}

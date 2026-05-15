@@ -1,0 +1,31 @@
+{{ define "main" }}
+<div class="episode-layout">
+
+  <article class="episode episode-body">
+    <h1>{{ .Title }}</h1>
+    <p class="episode-meta">
+      Выпуск {{ .Params.number }} · <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "02.01.2006" }}</time>
+    </p>
+
+    {{ with .Params.cover_image }}<img src="{{ . }}" alt="Обложка выпуска {{ $.Params.number }}">{{ end }}
+
+    {{ partial "audio-player.html" . }}
+
+    {{ with .Params.audio_size_mb }}<p class="audio-meta">Размер: {{ . }} МБ</p>{{ end }}
+
+    {{ if or .Params.chat_links.telegram .Params.chat_links.matrix }}
+    <p class="chat-links">
+      {{ with .Params.chat_links.telegram }}<a href="{{ . }}">Telegram</a>{{ end }}
+      {{ with .Params.chat_links.matrix }} · <a href="{{ . }}">Matrix</a>{{ end }}
+    </p>
+    {{ end }}
+
+    <div class="show-notes">
+      {{ .Content | safeHTML }}
+    </div>
+  </article>
+
+  {{ partial "sidebar.html" . }}
+
+</div>
+{{ end }}

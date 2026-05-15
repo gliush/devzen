@@ -1,0 +1,26 @@
+{{ define "main" }}
+<div class="episode-layout">
+  <div class="episode-body">
+    {{ $paginator := .Paginate (where .Site.RegularPages "Section" "episodes") }}
+    {{ range $paginator.Pages }}
+    {{ $ep := . }}
+    <article class="episode-card">
+      <div class="episode-card-body">
+        <h2 class="episode-card-title">
+          <a href="{{ $ep.Permalink }}">{{ $ep.Title }} — Episode {{ $ep.Params.number }}</a>
+        </h2>
+        <p class="episode-card-meta">{{ .Date.Format "02.01.2006" }}</p>
+      </div>
+      {{ with .Params.cover_image }}
+      <a href="{{ $ep.Permalink }}">
+        <img class="episode-card-img" src="{{ . }}" alt="Обложка выпуска {{ $ep.Params.number }}">
+      </a>
+      {{ end }}
+      {{ with .Params.summary }}<p class="episode-card-summary">{{ . }}</p>{{ end }}
+    </article>
+    {{ end }}
+    {{ partial "pagination.html" $paginator }}
+  </div>
+  {{ partial "sidebar.html" . }}
+</div>
+{{ end }}
