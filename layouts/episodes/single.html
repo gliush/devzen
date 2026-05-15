@@ -7,7 +7,7 @@
       Выпуск {{ .Params.number }} · <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "02.01.2006" }}</time>
     </p>
 
-    {{ with .Params.cover_image }}<img src="{{ . | absURL }}" alt="Обложка выпуска {{ $.Params.number }}">{{ end }}
+    {{ with .Params.cover_image }}<img src="{{ . | relURL }}" alt="Обложка выпуска {{ $.Params.number }}">{{ end }}
 
     {{ partial "audio-player.html" . }}
 
@@ -21,7 +21,7 @@
     {{ end }}
 
     <div class="show-notes">
-      {{ $uploadsURL := "/uploads/" | absURL }}
+      {{ $uploadsURL := "/uploads/" | relURL }}
       {{ .Content | replaceRE `src="/uploads/` (printf `src="%s` $uploadsURL) | replaceRE `href="/uploads/` (printf `href="%s` $uploadsURL) | safeHTML }}
     </div>
   </article>

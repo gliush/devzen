@@ -13,7 +13,7 @@
       </div>
       {{ with .Params.cover_image }}
       <a href="{{ $ep.Permalink }}">
-        <img class="episode-card-img" src="{{ . | absURL }}" alt="Обложка выпуска {{ $ep.Params.number }}">
+        <img class="episode-card-img" src="{{ . | relURL }}" alt="Обложка выпуска {{ $ep.Params.number }}">
       </a>
       {{ end }}
       {{ with .Params.summary }}<p class="episode-card-summary">{{ . }}</p>{{ end }}
