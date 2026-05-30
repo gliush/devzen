@@ -17,7 +17,7 @@
       <a href="{{ printf "%slive/" $b }}">Вещание</a>
       <a href="{{ printf "%sguests/" $b }}">Стать гостем</a>
       <a href="{{ printf "%scontact/" $b }}">Связаться</a>
-      <a href="{{ printf "%sfeed/index.xml" $b }}">RSS</a>
+      <a href="{{ printf "%sfeed.xml" $b }}">RSS</a>
     </nav>
   </div>
 </header>
@@ -25,7 +25,7 @@
 {{ block "main" . }}{{ end }}
 </main>
 <footer>
-  <p>© 2014–{{ now.Year }} DevZen Podcast · <a href="{{ printf "%sfeed/index.xml" site.BaseURL }}">RSS</a></p>
+  <p>© 2014–{{ now.Year }} DevZen Podcast · <a href="{{ printf "%sfeed.xml" site.BaseURL }}">RSS</a></p>
 </footer>
 {{ partial "timestamps.html" . }}
 </body>
